@@ -102,7 +102,7 @@ export default function RouteControls() {
                         <Text style={styles.mutedSmall}>FROM</Text>
                         <Text numberOfLines={1}>{allNodes.find(n => n.id === startNodeId)?.label}</Text>
                      </View>
-                     <Text style={{fontSize: 20, color: '#94a3b8', marginHorizontal: 8}}>→</Text>
+                     <Text style={{fontSize: 18, color: '#94a3b8', marginHorizontal: 8}}>→</Text>
                      <View style={{flex: 1, alignItems: 'flex-end'}}>
                         <Text style={styles.mutedSmall}>TO</Text>
                         <Text numberOfLines={1}>{allNodes.find(n => n.id === endNodeId)?.label}</Text>
@@ -117,9 +117,9 @@ export default function RouteControls() {
                <View style={{gap: 8, marginBottom: 16}}>
                  {path.steps.map((step, i) => (
                    <View key={i} style={styles.stepItem}>
-                     <Text style={{fontSize: 16, marginRight: 12}}>{step.type === 'walk' ? '🚶' : step.method === 'elevator' ? '🛗' : '🪜'}</Text>
+                     <Text style={{fontSize: 14, marginRight: 12}}>{step.type === 'walk' ? '🚶' : step.method === 'elevator' ? '🛗' : '🪜'}</Text>
                      <View style={{flex: 1}}>
-                       <Text style={{color: '#1e293b', fontWeight: '500', fontSize: 13}}>{step.description}</Text>
+                       <Text style={{color: '#1e293b', fontWeight: '500', fontSize: 11}}>{step.description}</Text>
                        {step.type === 'floor_change' && (
                          <View style={[styles.badge, step.method === 'elevator' ? {backgroundColor: '#dbeafe'} : {backgroundColor: '#fef3c7'}]}>
                            <Text style={{fontSize: 10, color: step.method === 'elevator' ? '#1e40af' : '#92400e', fontWeight: 'bold'}}>{step.method === 'elevator' ? 'Elevator' : 'Stairs'}</Text>
@@ -130,8 +130,8 @@ export default function RouteControls() {
                    </View>
                  ))}
                  <View style={[styles.stepItem, {borderLeftWidth: 3, borderLeftColor: '#10b981'}]}>
-                   <Text style={{fontSize: 16, marginRight: 12}}>🎯</Text>
-                   <Text style={{color: '#059669', fontWeight: 'bold', fontSize: 13}}>Arrived at {allNodes.find(n => n.id === endNodeId)?.label}</Text>
+                   <Text style={{fontSize: 14, marginRight: 12}}>🎯</Text>
+                   <Text style={{color: '#059669', fontWeight: 'bold', fontSize: 11}}>Arrived at {allNodes.find(n => n.id === endNodeId)?.label}</Text>
                  </View>
                </View>
 
@@ -233,19 +233,19 @@ function PickerWrapper({ selectedValue, onValueChange, building, placeholder }: 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: 'white', padding: 16 },
   scrollContent: { paddingBottom: 40 },
-  sectionTitle: { fontSize: 16, fontWeight: 'bold', marginBottom: 8, color: '#0f172a' },
+  sectionTitle: { fontSize: 14, fontWeight: 'bold', marginBottom: 8, color: '#0f172a' },
   chipRow: { flexDirection: 'row', marginBottom: 16 },
   scenarioChip: { paddingHorizontal: 16, paddingVertical: 8, borderRadius: 20, backgroundColor: '#f1f5f9', marginRight: 8 },
   activeChip: { backgroundColor: '#0f172a' },
-  scenarioText: { color: '#475569', fontSize: 13, fontWeight: '600' },
+  scenarioText: { color: '#475569', fontSize: 11, fontWeight: '600' },
   activeText: { color: 'white' },
   row: { flexDirection: 'row', gap: 12 },
   col: { flex: 1 },
-  label: { fontSize: 13, color: '#64748b', marginBottom: 6 },
+  label: { fontSize: 11, color: '#64748b', marginBottom: 6 },
   divider: { height: 1, backgroundColor: '#e2e8f0', marginVertical: 16 },
   errorText: { color: '#dc2626', marginBottom: 12, textAlign: 'center', backgroundColor: '#fee2e2', padding: 8, borderRadius: 8 },
   computeBtn: { backgroundColor: '#2563eb', padding: 16, borderRadius: 12, alignItems: 'center' },
-  computeBtnText: { color: 'white', fontWeight: 'bold', fontSize: 16 },
+  computeBtnText: { color: 'white', fontWeight: 'bold', fontSize: 14 },
   computeBtnDisabled: { opacity: 0.5 },
   clearBtn: { padding: 16, alignItems: 'center', marginTop: 8 },
   clearBtnText: { color: '#64748b', fontWeight: 'bold' },
@@ -256,11 +256,11 @@ const styles = StyleSheet.create({
   disabled: { opacity: 0.5 },
   hazardRow: { flexDirection: 'row', justifyContent: 'space-between', padding: 12, backgroundColor: '#fee2e2', borderRadius: 8, marginTop: 12 },
   summaryBox: { backgroundColor: '#f8fafc', borderRadius: 8, padding: 12, borderWidth: 1, borderColor: '#e2e8f0', marginBottom: 16 },
-  summaryTitle: { fontSize: 13, fontWeight: 'bold', color: '#0f172a', marginBottom: 8 },
+  summaryTitle: { fontSize: 11, fontWeight: 'bold', color: '#0f172a', marginBottom: 8 },
   summaryRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 },
   mutedSmall: { color: '#64748b', fontSize: 10, textTransform: 'uppercase', marginBottom: 2 },
   summaryStatRow: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 4 },
-  statBold: { fontWeight: 'bold', fontSize: 12 },
+  statBold: { fontWeight: 'bold', fontSize: 11 },
   stepItem: { flexDirection: 'row', alignItems: 'flex-start', borderLeftWidth: 1, borderLeftColor: '#cbd5e1', paddingLeft: 12, paddingBottom: 16, marginLeft: 8 },
   badge: { alignSelf: 'flex-start', paddingHorizontal: 6, paddingVertical: 2, borderRadius: 4, marginTop: 4 }
 });

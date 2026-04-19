@@ -1,10 +1,27 @@
-export type UserRole = 'Guest' | 'Patient' | 'Staff';
+export type UserRole = "Guest" | "Patient" | "Staff";
 
-export type IncidentType = 'fire' | 'medical' | 'smoke' | 'suspicious_activity' | 'crowd_congestion' | 'blocked_exit' | 'water_leakage' | 'power_outage' | 'other';
+export type IncidentType =
+  | "Fire"
+  | "Medical"
+  | "Security"
+  | "Smoke"
+  | "Hazmat"
+  | "Maintenance"
+  | "IT Offline"
+  | "Breach"
+  | string;
 
-export type IncidentSeverity = 'low' | 'medium' | 'high' | 'critical';
+export type IncidentSeverity = "low" | "medium" | "high" | "critical";
 
-export type IncidentStatus = 'active' | 'resolved' | 'under_review';
+export type IncidentStatus =
+  | "New"
+  | "In Progress"
+  | "Acknowledged"
+  | "Resolved";
+export type TaskStatus = "New" | "In Progress" | "Acknowledged" | "Resolved";
+export type TaskPriority = "High" | "Medium" | "Low";
+export type DeviceStatus = "online" | "offline" | "alert" | "maintenance";
+export type DeviceType = "cctv" | "smoke" | "fire" | "door" | "access";
 
 export interface LocationCoordinates {
   x: number;
@@ -16,14 +33,52 @@ export interface Incident {
   type: IncidentType;
   severity: IncidentSeverity;
   status: IncidentStatus;
-  timestamp: string; // ISO string
+  time: string;
   location: string;
-  floor: string;
-  zone?: string;
-  description: string;
-  aiSummary?: string;
-  recommendedActions?: string[];
-  affectedAreas?: string[];
+  team: string;
+  nodeId?: string;
+  floorId?: number;
+  mapLinked: boolean;
+  description?: string;
+}
+
+export interface Task {
+  id: string;
+  incidentId: string;
+  assignee: string;
+  priority: TaskPriority;
+  status: TaskStatus;
+  createdAt: string;
+  description?: string;
+}
+
+export interface Notification {
+  id: string;
+  incidentId: string;
+  user: string;
+  role: string;
+  time: string;
+  opened: boolean;
+  ack: boolean;
+  escalated: boolean;
+  message: string;
+}
+
+export interface Device {
+  id: string;
+  name: string;
+  type: DeviceType;
+  location: string;
+  status: DeviceStatus;
+  lastPing: string;
+  battery?: number;
+  feedUrl?: string;
+}
+
+export interface OpsState {
+  incidents: Incident[];
+  tasks: Task[];
+  notifications: Notification[];
 }
 
 export interface Contact {
@@ -32,12 +87,21 @@ export interface Contact {
   name: string;
   phone: string;
   iconName: string;
-  priority: 'low' | 'medium' | 'high';
+  priority: "low" | "medium" | "high";
 }
 
 export interface MapMarkerData {
   id: string;
-  type: 'exit' | 'extinguisher' | 'first_aid' | 'security' | 'stairs' | 'elevator' | 'safe_zone' | 'incident' | 'user';
+  type:
+    | "exit"
+    | "extinguisher"
+    | "first_aid"
+    | "security"
+    | "stairs"
+    | "elevator"
+    | "safe_zone"
+    | "incident"
+    | "user";
   label: string;
   coordinates: LocationCoordinates;
   floor: string;
@@ -55,4 +119,10 @@ export interface RouteSuggestion {
   title: string;
   instructions: string[];
   safeDistance: string;
+}
+
+export interface ChatMessage {
+  id: string;
+  role: "assistant" | "user";
+  content: string;
 }

@@ -46,16 +46,16 @@ const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#f8fafc' },
   content: { padding: 20, paddingBottom: 60 },
   headerBox: { backgroundColor: '#e0f2fe', padding: 24, borderRadius: 16, alignItems: 'center', marginBottom: 24 },
-  title: { fontSize: 24, fontWeight: '900', color: '#0f172a', marginBottom: 8 },
-  subtitle: { fontSize: 15, color: '#334155', textAlign: 'center', lineHeight: 22 },
+  title: { fontSize: 22, fontWeight: '900', color: '#0f172a', marginBottom: 8 },
+  subtitle: { fontSize: 13, color: '#334155', textAlign: 'center', lineHeight: 22 },
   
   cardsContainer: { gap: 16 },
   tipCard: { backgroundColor: 'white', padding: 20, borderRadius: 16, flexDirection: 'row', alignItems: 'flex-start', elevation: 2, shadowColor: '#000', shadowOpacity: 0.05, shadowRadius: 4, shadowOffset:{width:0, height:2} },
   iconContainer: { backgroundColor: '#eff6ff', padding: 16, borderRadius: 12, marginRight: 16 },
   textContainer: { flex: 1 },
-  tipTitle: { fontSize: 18, fontWeight: 'bold', color: '#0f172a', marginBottom: 6 },
-  tipDescription: { fontSize: 14, color: '#475569', lineHeight: 20 },
+  tipTitle: { fontSize: 16, fontWeight: 'bold', color: '#0f172a', marginBottom: 6 },
+  tipDescription: { fontSize: 12, color: '#475569', lineHeight: 20 },
 
   footerNote: { marginTop: 32, padding: 16, backgroundColor: '#fff7ed', borderRadius: 12, borderWidth: 1, borderColor: '#ffedd5' },
-  footerText: { color: '#c2410c', fontSize: 14, lineHeight: 20, textAlign: 'center', fontWeight: '500' }
+  footerText: { color: '#c2410c', fontSize: 12, lineHeight: 20, textAlign: 'center', fontWeight: '500' }
 });
