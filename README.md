@@ -8,6 +8,7 @@ It provides role-based operations, live incident/task/device synchronization, in
 This repository contains the mobile client for EvacuAid.
 
 Core goals:
+
 - Give responders and operations teams a single incident dashboard.
 - Guide people to safety through map-based route computation.
 - Keep incident, task, notification, and device state synchronized with backend APIs.
@@ -29,20 +30,25 @@ Core goals:
 The app uses a layered architecture:
 
 1. Presentation Layer
+
 - Screens in `app/`
 - Reusable UI components in `components/`
 
 2. Domain/State Layer
+
 - Global operational state in `data/store.ts`
 - Navigation/map editor specific state in `stores/`
 
 3. Integration Layer
+
 - API transport and endpoint wrappers in `services/`
 
 4. Computational Layer
+
 - Graph + pathfinding algorithms in `lib/graph/`
 
 5. Shared Contracts
+
 - Core types/interfaces in `types/index.ts`
 
 ### Data Flow
@@ -50,9 +56,11 @@ The app uses a layered architecture:
 UI Screen -> Zustand Action -> services/appApi.ts -> services/apiClient.ts -> Backend API
 
 On successful response:
+
 - Store state is updated and UI re-renders.
 
 On failure:
+
 - Optimistic updates are rolled back where needed.
 - Errors are surfaced to UI (alerts, sync status, etc.).
 
@@ -69,7 +77,7 @@ On failure:
 - `stores/`
   - Specialized map editor and navigation stores
 - `lib/graph/`
-  - Building graph model + Dijkstra/A* routing
+  - Building graph model + Dijkstra/A\* routing
 - `types/`
   - Shared app types
 - `assets/`
@@ -95,6 +103,7 @@ On failure:
   - Devices: status patch
 
 Pattern used:
+
 - Optimistic local update first
 - API call second
 - Rollback on failure
@@ -108,7 +117,7 @@ Pattern used:
 
 1. `editorStore` hydrates building map from remote map API.
 2. User selects source/destination nodes and options.
-3. `navigationStore` computes route using A* or Dijkstra.
+3. `navigationStore` computes route using A\* or Dijkstra.
 4. Routing can avoid emergency/danger nodes.
 5. Updated map can be persisted back to backend.
 
@@ -130,6 +139,7 @@ DATABASE_URL="only-if-used-by-local-tools"
 ```
 
 Notes:
+
 - Mobile release builds must receive `EXPO_PUBLIC_...` values at build time.
 - Local `.env` is not automatically used by EAS cloud builds unless configured in EAS env.
 
@@ -203,6 +213,7 @@ eas build:run -p android
 ## 9) API Integration Surface
 
 Current API wrappers are centralized in `services/appApi.ts`:
+
 - `/api/state`
 - `/api/incidents`
 - `/api/incidents/:id/status`
@@ -217,6 +228,7 @@ Current API wrappers are centralized in `services/appApi.ts`:
 - `/api/chat`
 
 Transport behavior is handled in `services/apiClient.ts`:
+
 - Base URL validation
 - Android localhost/10.0.2.2 candidate fallback behavior
 - HTTP status/error normalization
@@ -243,6 +255,7 @@ Transport behavior is handled in `services/apiClient.ts`:
 ## 11) Current Script List
 
 From `package.json`:
+
 - `start`
 - `android`
 - `ios`
